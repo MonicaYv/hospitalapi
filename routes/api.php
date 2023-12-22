@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientRecordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('/register-hospital', [HospitalController::class, 'register']);
+Route::put('/update-hospital/{id}', [HospitalController::class, 'update']);
+Route::get('/get-hospital/{id}', [HospitalController::class, 'getHospital']);
+Route::post('/register-patient', [PatientController::class, 'register']);
+Route::put('/update-patient/{id}', [PatientController::class, 'update']);
+Route::get('/get-patient/{id}', [PatientController::class, 'getPatient']);
+Route::post('/register-patientrecord', [PatientRecordController::class, 'register']);
+Route::put('/update-patientrecord/{id}', [PatientRecordController::class, 'update']);
+Route::get('/get-patient-records', [PatientRecordController::class, 'getPatientRecords']);
+
+
